@@ -13,4 +13,11 @@
 # GNU General Public License for more details.
 #
 
+if [ ! -f "build/build.sh" ]; then
+  echo "The current working directory must be the parent directory of .repo/"
+  echo "Change into this directory before running the script with"
+  echo "  build-wrapper/build.sh"
+  exit 1
+fi
+
 build/build.sh
