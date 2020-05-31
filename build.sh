@@ -20,4 +20,14 @@ if [ ! -f "build/build.sh" ]; then
   exit 1
 fi
 
-build/build.sh
+OUT_DIR=$PWD/out/android-msm-pixel-4.9
+
+function build() {
+  build/build.sh
+}
+
+if [ ! -d "${OUT_DIR}" ]; then
+  mkdir -p ${OUT_DIR}
+fi
+
+( build ) 2>&1 | tee ${OUT_DIR}/build.log
